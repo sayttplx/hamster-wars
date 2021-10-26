@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Battle from './components/Battle';
 import Gallery from './components/Gallery';
@@ -9,10 +9,11 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <>
       <Navbar />
+
       <Switch>
-        <Route exact path='/'>
+        <Route path='/' exact>
           <Home />
         </Route>
         <Route path='/battle'>
@@ -25,7 +26,7 @@ function App() {
           <BadUrl />
         </Route>
       </Switch>
-    </Router>
+    </>
   );
 }
 

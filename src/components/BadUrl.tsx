@@ -1,15 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
-const BadUrl = () => {
+const BadUrl = () => (
+	<div>
+		Den här sidan finns inte! Prova att gå <Link to="/">tillbaka till startsidan</Link>.
+	</div>
+)
 
-    return (
-        <>
-            <h1>This pages does not exist</h1>
-            <p>
-                <Link to="/">Go back to the homepage</Link>
-            </p>
-        </>
-    )
-};
-
-export default BadUrl;
+export default BadUrl
