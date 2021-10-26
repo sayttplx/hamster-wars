@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const path = require('path');
 
 
 const hamstersRoute = require('./routes/hamsters.js');
@@ -35,9 +36,9 @@ app.use('/', laddersRoute);
 
 app.use('/matchwinners', winnersRoute);
 
-app.use('*', (req, res) => {
-    res.sendFile(__dirname + '../build/index.html')
-});
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../build/index.html"));
+  });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
