@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 1338;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/build') )
+app.use(express.static(__dirname + '/../build') )
 app.use(express.json());
 app.use(cors());
 
@@ -18,15 +18,17 @@ app.use((req, res, next) => {
 	next();
 })
 
-app.get('*', (req,res) => {
-    res.send(__dirname + '/build/index.html')
-})
+
 
 const animalData = ['katt','hund','apa','kanin']
 
 app.get('/animals', (req, res) => {
     res.send(animalData);
 });
+
+app.get('*', (req,res) => {
+    res.sendFile(__dirname + '/build/index.html')
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
