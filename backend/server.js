@@ -35,7 +35,7 @@ app.use('/', laddersRoute);
 
 app.use('/matchwinners', winnersRoute);
 
-app.get('*', (req, res) => {
+app.use('*', (req, res) => {
     res.sendFile(__dirname + '/build/index.html')
 });
 
