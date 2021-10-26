@@ -1,4 +1,4 @@
-
+import AnimalList from './components/animals/AnimalList'
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       </nav>
       </header>
       <main>
-
+    <AnimalList/>
       </main>
     </div>
   );
