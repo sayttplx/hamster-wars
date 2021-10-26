@@ -4,7 +4,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Hamster wars</h1>
+      <header>
+      <h1>Fullstack app</h1>
+      <nav>
+
+      </nav>
+      </header>
+      <main>
+
+      </main>
     </div>
   );
 }
