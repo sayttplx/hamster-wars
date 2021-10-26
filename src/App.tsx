@@ -22,7 +22,7 @@ function App() {
         <Route path='/gallery'>
           <Gallery />
         </Route>
-        <Route path='/'>
+        <Route path='*'>
           <BadUrl />
         </Route>
       </Switch>
