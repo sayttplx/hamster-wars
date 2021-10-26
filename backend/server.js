@@ -36,7 +36,7 @@ app.use('/', laddersRoute);
 app.use('/matchwinners', winnersRoute);
 
 app.use('*', (req, res) => {
-    res.sendFile(__dirname + '/build/index.html')
+    res.sendFile(__dirname + '../build/index.html')
 });
 
 app.listen(PORT, () => {
