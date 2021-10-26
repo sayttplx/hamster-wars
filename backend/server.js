@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 1338;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public') )
+app.use(express.static(__dirname + '/build') )
 app.use(express.json());
 app.use(cors());
 
@@ -18,11 +18,9 @@ app.use((req, res, next) => {
 	next();
 })
 
-
-app.get('/', (req, res) => {
-    console.log('request received');
-    res.send('Hello World!');
-});
+app.get('*', (req,res) => {
+    res.send(__dirname + '/build/index.html')
+})
 
 const animalData = ['katt','hund','apa','kanin']
 
