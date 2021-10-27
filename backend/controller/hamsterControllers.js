@@ -37,7 +37,8 @@ exports.getRandomHamster = async (req, res) => {
     const arr = [];
 
     hamstersSnapshot.forEach(async hamsterRef => {
-        arr.push(hamsterRef.data());
+
+        arr.push({...hamsterRef.data(), id: hamsterRef.id});
     });
 
     const randomHamster = arr[Math.floor(Math.random() * arr.length)];
