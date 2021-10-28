@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { Hamster } from '../models/Hamster'
+import BaseModalWrapper from '../ModalPopup/BaseModalWrapper'
 
 
 const Gallery = () => {
     const [hamsters, setHamsters] = useState<Hamster[]>([]);
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+
+    const toggleModal = () => {
+        setIsModalVisible(isModalVisible => !isModalVisible);
+    }
+
 
     async function getHamsters() {
         const response = await fetch('/hamsters', { method: 'GET' });
@@ -23,6 +32,19 @@ const Gallery = () => {
     return (
         <>
             <h1>Gallery</h1>
+            <br />
+            <br />
+            <button onClick={toggleModal}>New Hamster</button>
+            <BaseModalWrapper 
+            isModalVisibile={isModalVisible} 
+            onBackdropClick={toggleModal}/>
+
+
+            <br />
+            <br />
+            <br />
+            <br />
+            
             <div className="gallery">
                 {hamsters ? hamsters.map(hamster =>
                     <div key={hamster.id} className="gallery__item">
