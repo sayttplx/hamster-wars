@@ -10,4 +10,14 @@ interface Hamster {
 	games: number
 }
 
-export type { Hamster }
+interface PostHamster {
+	name: string,
+	favFood: string,
+	loves: string,
+	imgName: string,
+	wins: number,
+	defeats: number,
+	games: number
+}
+
+export type { Hamster, PostHamster };
