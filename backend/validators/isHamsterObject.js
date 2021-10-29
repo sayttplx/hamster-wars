@@ -1,9 +1,15 @@
 const isHamsterObject = (obj) => {
     const keys = Object.keys(obj);
 
+    if (keys.some(key => obj[key] === '')) {
+        return false;
+    }
+
     if ((typeof obj) !== 'object') {
         return false;
     }
+
+
 
     if (!keys.includes('wins')
         || !keys.includes('defeats')
@@ -14,6 +20,8 @@ const isHamsterObject = (obj) => {
         || !keys.includes('loves')
         || !keys.includes('imgName')) {
         return false
+
+        
     }
     return true;
 
