@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Hamster } from '../models/Hamster'
-import BaseModalWrapper from '../ModalPopup/BaseModalWrapper'
+
+import CreateModal from '../ModalPopup/CreateModal'
 
 
 const Gallery = () => {
@@ -9,9 +10,16 @@ const Gallery = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
 
+
     const toggleModal = () => {
         setIsModalVisible(isModalVisible => !isModalVisible);
     }
+
+    const onBackdropClick = () => {
+        setIsModalVisible(false)
+      }
+
+
 
 
     async function getHamsters() {
@@ -29,15 +37,20 @@ const Gallery = () => {
         getHamsters();
     }
 
+
+
+
+
+
     return (
         <>
             <h1>Gallery</h1>
             <br />
             <br />
             <button onClick={toggleModal}>New Hamster</button>
-            <BaseModalWrapper 
-            isModalVisibile={isModalVisible} 
-            onBackdropClick={toggleModal}/>
+            <button onClick={toggleModal}>Show modal</button>
+            <CreateModal onClose={onBackdropClick}  isModalVisible={isModalVisible} />
+
 
 
             <br />

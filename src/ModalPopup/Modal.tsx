@@ -1,14 +1,38 @@
+import React, { MouseEventHandler } from 'react'
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
-import ReactDOM from "react-dom";
 
 interface ModalProps {
-    onBackdropClick: () => void;
+  onBackdropClick: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ onBackdropClick, children }) => {
-    return ReactDOM.createPortal(<div onClick={onBackdropClick}>
-        <span>Im a modal</span>
-    </div>, document.getElementById("modal-root")!);
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const stopPropagation: MouseEventHandler<HTMLDivElement> = e => {
+  e.persist();
+  e.stopPropagation();
 };
 
-export default Modal;
+
+
+const Modal: React.FC<ModalProps> = ({ onBackdropClick, children }) => {
+  return ReactDOM.createPortal(
+    <Overlay onClick={onBackdropClick}>
+      <div onClick={stopPropagation}>{children}</div>
+    </Overlay>,
+    document.getElementById('modal-root')!
+  );
+}
+
+export default Modal
