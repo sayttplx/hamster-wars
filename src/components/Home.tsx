@@ -27,9 +27,6 @@ const Wrapper = styled.div`
 
 
 
-
-
-
 const Home = () => {
 
     const [cutestHamster, setCutestHamster] = useState<Hamster[] | null>(null)

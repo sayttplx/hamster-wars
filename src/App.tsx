@@ -4,6 +4,7 @@ import Battle from './components/Battle';
 import Gallery from './components/Gallery';
 import Navbar from './components/Navbar';
 import BadUrl from './components/BadUrl';
+import Stats from './components/Stats'
 import './App.css';
 
 
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path='/gallery'>
           <Gallery />
+        </Route>
+        <Route path='/stats'>
+          <Stats />
         </Route>
         <Route path='*'>
           <BadUrl />

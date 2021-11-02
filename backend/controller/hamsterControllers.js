@@ -125,7 +125,8 @@ exports.getCutestHamster = async (req, res) => {
                     cutestHamster = [hamster];
                 }
             } else {
-                cutestHamster.push(hamster);
+                cutestHamster.push({hamster});
+                
             }
         }
     });
