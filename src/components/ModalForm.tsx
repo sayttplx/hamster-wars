@@ -136,10 +136,7 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
   const [defeats] = useState(0)
 
 
-
-
   const hamsterObject = { name, age, favFood, loves, imgName, wins, games, defeats }
-
 
   async function createHamster(hamsterObject: PostHamster) {
     await fetch('/hamsters', {

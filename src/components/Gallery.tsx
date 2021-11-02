@@ -18,8 +18,6 @@ const Grid = styled.div`
     list-style-type: none;
 `;
 
-
-
 const GalleryItem = styled.div`
 position: relative;
 
