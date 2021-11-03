@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Hamster } from '../models/Hamster'
 import AddForm from './ModalForm'
 import styled from "styled-components";
+import axios from "axios";
 
 
 const Grid = styled.div`
@@ -61,22 +62,23 @@ const Button = styled.button`
 `;
 
 const Gallery = () => {
-    const [hamsters, setHamsters] = useState<Hamster[]>([]);
+    const [hamsters, setHamsters] = useState<[] | Hamster[]>([]);
     const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
     async function getHamsters() {
-        const response = await fetch('/hamsters', { method: 'GET' });
-        const data: Hamster[] = await response.json();
-        setHamsters(data);
+        const response = await axios.get('/hamsters')
+        setHamsters(response.data)
     }
 
     useEffect(() => {
         getHamsters();
+
     }, []);
 
     async function deleteHamster(id: string) {
         await fetch(`/hamsters/${id}`, { method: 'DELETE' });
-        getHamsters();
+        setHamsters(hamsters.filter(hamster => hamster.id !== id));
+
     }
 
     async function addHamster() {
@@ -99,6 +101,7 @@ const Gallery = () => {
                         <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
                         <h3>{hamster.name}</h3>
                         <button onClick={() => deleteHamster(hamster.id)}>🗑️</button>
+
                     </GalleryItem>
                 ) : null}
             </Grid>

@@ -44,18 +44,22 @@ const Home = () => {
 
     return (
         <Wrapper>
-            <h1>Hamster wars</h1>
-            <p>Välkommen, klicka på battle för att köra igång spelet och välj sedan den hamster du tycker är sötast.. Du kan också gå till galleriet för att
-                se alla hamster som finns i spelet.
-            </p>
-
+            
+                <div>
+                    <h1>Hamster wars</h1>{cutestHamster ?
+                    <p>Välkommen, klicka på battle för att köra igång spelet och välj sedan den hamster du tycker är sötast.. Du kan också gå till galleriet för att
+                        se alla hamster som finns i spelet.
+                    </p>
+                    : <h1>Loading the database</h1> }
+            
+                </div>
+               
             <Link to="/battle">
                 <Button>Battle</Button>
             </Link>
             {cutestHamster ? <p>{cutestHamster[0].name} är den sötaste!</p>
                 : <p>Vänta lite...</p>
             }
-
 
 
         </Wrapper>
