@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Hamster } from '../models/Hamster'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import axios from 'axios';
 
 
 const Button = styled.button`
@@ -32,14 +33,17 @@ const Home = () => {
     const [cutestHamster, setCutestHamster] = useState<Hamster[] | null>(null)
 
     async function getCutest() {
-        const response = await fetch('/hamsters/cutest', { method: 'GET' });
-        const data: Hamster[] = await response.json();
-        setCutestHamster(data);
+        const response = await axios.get('/hamsters/cutest');
+        const data = await response.data
+        setCutestHamster(data)
+
+        
     }
 
     useEffect(() => {
         getCutest()
     }, [])
+
 
 
     return (
@@ -57,9 +61,17 @@ const Home = () => {
             <Link to="/battle">
                 <Button>Battle</Button>
             </Link>
-            {cutestHamster ? <p>{cutestHamster[0].name} är den sötaste!</p>
-                : <p>Vänta lite...</p>
-            }
+            {cutestHamster ? 
+
+            cutestHamster.map(hamster => (
+                <div key={hamster.id}>
+                <p>Namn:{hamster.name}</p>    
+                 <p>Vinster: {hamster.wins}</p>   
+                 <p>Förluster:  {hamster.defeats}</p>  
+                  <p>Matcher: </p>  
+                </div>
+            ))
+            : <div>Loading</div>}
 
 
         </Wrapper>

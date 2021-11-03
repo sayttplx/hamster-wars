@@ -99,37 +99,18 @@ exports.deleteOneHamsterById = async (req, res) => {
 exports.getCutestHamster = async (req, res) => {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
-
     if (hamstersSnapshot.empty) { res.sendStatus(400); return; };
-
-    const arr = [];
-
-    hamstersSnapshot.forEach(async hamsterRef => {
-        arr.push(hamsterRef.data());
-    });
-
-    let newArr = [];
-    let percentage;
-    let cutestHamster = [];
-    let highestPercentage;
-
-    arr.forEach(hamster => {
-        if (hamster.games > 0) {
-            percentage = hamster.wins / hamster.games * 100;
-            hamster.perc = percentage;
-            newArr.push(hamster);
-            if (highestPercentage !== hamster.perc) {
-                console.log(hamster.perc)
-                highestPercentage = Math.max(...newArr.map(hamster => hamster.perc));
-                if (hamster.perc === highestPercentage) {
-                    cutestHamster = [hamster];
-                }
-            } else {
-                cutestHamster.push({hamster});
-                
-            }
-        }
-    });
+    const arr = []
+    hamstersSnapshot.forEach(hamster => {
+        arr.push({...hamster.data(), id: hamster.id});
+    })
+    const sortedHamsters = arr.sort(function (a, b) {
+        return b.wins - a.wins
+    })
+    const cutestHamster = [];
+    for (let i = 0; i < 1; i++) {
+        cutestHamster.push(sortedHamsters[i])
+    }
 
     res.status(200).send(cutestHamster);
 }
