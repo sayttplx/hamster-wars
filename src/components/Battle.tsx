@@ -21,6 +21,14 @@ const Button = styled.button`
     border-radius: 5px;
 `;
 
+const Loading = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+`;
+
 
 const Battle = () => {
     const [combatantOne, setCombatantOne] = useState<null | Hamster>(null)
@@ -31,16 +39,25 @@ const Battle = () => {
     const [combatantStatsTwo, setCombatantStatsTwo] = useState(false)
     const [voteButton, setVoteButton] = useState(true)
 
-    
+
     async function getRandomHamster() {
-        const resOne = await axios.get('/hamsters/random')
-        const resTwo = await axios.get('/hamsters/random')
-        setCombatantOne(resOne.data)
-        setCombatantTwo(resTwo.data)
+        try {
+            const resOne = await axios.get('/hamsters/random')
+            const resTwo = await axios.get('/hamsters/random')
+            setCombatantOne(resOne.data)
+            setCombatantTwo(resTwo.data)
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     useEffect(() => {
-        getRandomHamster()
+        
+
+        setTimeout(() => {
+            getRandomHamster()
+        }, 1500)
     }, [])
 
 
@@ -58,7 +75,7 @@ const Battle = () => {
 
 
 
-    if (!combatantOne || !combatantTwo) { return <div>Loading...</div> }
+    if (!combatantOne || !combatantTwo) { return <Loading>Loading...</Loading> }
         
     async function voteOne() {
 
@@ -112,7 +129,6 @@ const Battle = () => {
         <BattleField>
 
             <h1>Battle</h1>
-
             <Grid>
 
                 <div className="grid-item">
