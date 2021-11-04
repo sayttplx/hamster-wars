@@ -40,7 +40,7 @@ const GalleryItem = styled.div`
     transform-style: preserve-3d;
   }
   
-  .flip-card-inner-lol {
+  .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
@@ -48,8 +48,10 @@ const GalleryItem = styled.div`
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
+
+    
   
-    .flip-card-inner {
+    &:hover .flip-card-inner {
     transform: rotateY(180deg);
     }
 

@@ -9,18 +9,28 @@ const InputWrapper = styled.div`
     display: block;
     background-color: white;
     border: none;
+
+
     &:focus {
       outline: none;
     }
   }
-`;
+`
 
 const InputContainer = styled(InputWrapper)`
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   width: 20rem;
   font-size: 1.2rem;
-  border: 1px solid grey;
+  border: 1px solid white;
   padding: 5px;
+
+      .valid {
+        border: 1px solid green;
+    }
+
+    .invalid {
+        border: 1px solid red;
+    }
 `
 const IconContainer = styled.div`
   width: 33px;
