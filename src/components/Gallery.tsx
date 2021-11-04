@@ -19,8 +19,64 @@ const Grid = styled.div`
     list-style-type: none;
 `;
 
+
+
+
+
 const GalleryItem = styled.div`
-position: relative;
+    position: relative;
+    background-color: transparent;
+    width: 250px;
+    height: 250px;
+    perspective: 1000px; 
+    
+
+    .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card-inner-lol {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+    .flip-card-inner {
+    transform: rotateY(180deg);
+    }
+
+  .flip-card-front, .flip-card-back {
+     position: absolute;
+     width: 100%;
+    height: 100%;
+     -webkit-backface-visibility: hidden; /* Safari */
+     backface-visibility: hidden;
+   }
+
+   .flip-card-front {
+     background-color: #bbb;
+     color: black;
+   }
+
+   .flip-card-back {
+     background-color: dodgerblue;
+     color: white;
+     transform: rotateY(180deg);
+   }
+
+
+
+
+  
+  
 
 img {
     border: 4px solid rgb(0, 0, 0);
@@ -61,9 +117,14 @@ const Button = styled.button`
   border-radius: 5px;
 `;
 
+
 const Gallery = () => {
     const [hamsters, setHamsters] = useState<[] | Hamster[]>([]);
     const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+   
+
+
+
 
     async function getHamsters() {
         const response = await axios.get('/hamsters')
@@ -85,6 +146,10 @@ const Gallery = () => {
         getHamsters();
     }
 
+
+
+
+
     return (
         <>
             <div className="gall">
@@ -94,14 +159,22 @@ const Gallery = () => {
                     <AddForm addHamster={addHamster} show={isModalVisible} set={setIsModalVisible} />
                     : null}
             </div>
-
+            
             <Grid>
                 {hamsters ? hamsters.map(hamster =>
-                    <GalleryItem key={hamster.id}>
-                        <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
-                        <h3>{hamster.name}</h3>
-                        <button onClick={() => deleteHamster(hamster.id)}>🗑️</button>
-
+                    <GalleryItem  key={hamster.id}>
+                        <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                                <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
+                                <h3>{hamster.name}</h3>
+                                <button onClick={() => deleteHamster(hamster.id)}>🗑️</button>
+                            </div>
+                            <div className="flip-card-back">
+                                <p>{hamster.name} älskar att {hamster.loves}</p>
+                        
+                                
+                            </div>
+                        </div>
                     </GalleryItem>
                 ) : null}
             </Grid>
