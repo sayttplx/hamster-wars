@@ -12,6 +12,7 @@ interface Hamster {
 
 interface PostHamster {
 	name: string,
+	age: string,
 	favFood: string,
 	loves: string,
 	imgName: string,

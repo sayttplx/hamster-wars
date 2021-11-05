@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Hamster } from '../models/Hamster'
+import { Hamster } from '../../models/Hamster'
 import styled from 'styled-components'
 import axios from 'axios';
-import Start from './home/Start';
-import Error from './home/Error';
+import Start from './Start';
+import Error from './Error';
 
 
 const Wrapper = styled.div`

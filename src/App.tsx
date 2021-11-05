@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Battle from './components/Battle';
-import Gallery from './components/Gallery';
+import Home from './components/home/Home';
+import Battle from './components/battle/Battle';
+import Gallery from './components/gallery/Gallery';
 import Navbar from './components/Navbar';
 import BadUrl from './components/BadUrl';
 import Stats from './components/Stats'

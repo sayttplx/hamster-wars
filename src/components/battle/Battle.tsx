@@ -1,33 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Hamster } from '../models/Hamster'
-import { Grid } from './battle/Grid'
-import { BattleField } from './battle/Battlefield'
-import axios from 'axios'
-import styled from 'styled-components';
+import { Hamster } from '../../models/Hamster'
+import { Grid } from './Grid'
+import { Button } from './Button'
+import { BattleField } from './Battlefield'
+import { Loading } from './Loading';
+import axios from 'axios';
 
-
-const Button = styled.button`
-    background-color: #ff5c5c;
-    border: none;
-    width: 100px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-`;
-
-const Loading = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bold;
-`;
 
 
 const Battle = () => {
