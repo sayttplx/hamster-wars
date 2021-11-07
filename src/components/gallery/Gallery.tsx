@@ -6,7 +6,20 @@ import { Button } from "./Button";
 import AddForm from './modal/ModalForm'
 import axios from "axios";
 import HamsterInfo from "./Info";
-import styled from "styled-components";
+import styled from 'styled-components';
+
+const GalleryHeader = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+    }
+    `
+
 
 
 
@@ -46,27 +59,30 @@ const Gallery = () => {
 
 
     const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false)
+
 
 
     return (
         <>
-            <div className="gall">
+            <GalleryHeader>
                 <h1>Gallery</h1>
                 <Button onClick={() => setIsModalVisible(!isModalVisible)}>Add Hamster</Button>
                 {isModalVisible ?
                     <AddForm addHamster={addHamster} show={isModalVisible} set={setIsModalVisible} />
                     : null}
-            </div>
+            </GalleryHeader>
             
             <Grid>
-            {hamsterInfo && show ? <HamsterInfo ham={hamsterInfo} /> : null}
+            {hamsterInfo && show ? <HamsterInfo hamster={hamsterInfo} handleClose={handleClose} /> : null}
                 {hamsters ? hamsters.map(hamster =>
+                    
                     <GalleryItem  key={hamster.id}>
                                 
                                 <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
                                 <h3>{hamster.name}</h3>
                                 <button className="delete-button" onClick={() => deleteHamster(hamster.id)}>🗑️</button>
-                                <button className="info-button" onClick={() => {setShow(!show); getHamsterInfoById(hamster.id)}}>🐻</button>
+                                <button className="info-button" onClick={() => {setShow(!show); getHamsterInfoById(hamster.id)}}>🐹</button>
                                 
                     </GalleryItem>
                 ) : null}

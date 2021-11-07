@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navigation = styled.nav`
-    background: #fff;
-    padding: 1rem;
+    background-color: #ffe8d6;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 
     ul {

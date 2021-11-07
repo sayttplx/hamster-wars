@@ -8,7 +8,6 @@ export const Section = styled.section`
   top: 0;
   left: 0;
   z-index: 1;
-  
 `
 
 export const Header = styled.h3`
