@@ -15,7 +15,7 @@ const GalleryHeader = styled.div`
     justify-content: space-around;
 
     h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
         font-weight: bold;
     }
     `

@@ -20,7 +20,7 @@ const Navigation = styled.nav`
             color: #000;
             cursor: pointer;
             &:hover {
-                color: #f00;
+                color: #E1C1BC;
             }
         }
     }
@@ -36,6 +36,7 @@ const Navbar = () => {
                 <Link to="/battle"><li>Battle</li></Link>
                 <Link to="/gallery"><li>Gallery</li></Link>
                 <Link to="/stats">Stats</Link>
+                <Link to="/matches">History</Link>
             </ul>
         </Navigation>
 
