@@ -30,26 +30,39 @@ const History = () => {
 
     return (
         <div>
-            {matches ? matches.map(match => (
-                <div key={match.id}>
-                    {hamsters ? hamsters.map(hamster => (
-                        <div key={hamster.id}>
-                            {match.winnerId === hamster.id ?
-                                <div>
-                                    <h1>Winner</h1> <h2>{hamster.name}</h2>  <img src={`/img/${hamster.imgName}`} alt={hamster.name} width="200px" height="200px" />
-                                </div>
-                                : null}
-                            {match.loserId === hamster.id ?
-                                <div> <h1>Loser</h1> <h2>{hamster.name} </h2> <img src={`/img/${hamster.imgName}`} alt={hamster.name} width="200px" height="200px" />
-                                </div>
-                                : null}
+            {matches ?
+                matches.map(match => (
+                    <div key={match.id} >
+                        {
+                            hamsters?.map(hamster => {
+                                
+                                if (hamster.id === match.winnerId) {
+                                    return (
+                                        <div key={match.winnerId}>
+                                            <h1>Winner</h1>
+                                            <h2>{hamster.name}</h2>
+                                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} width="200px" height="200px" />
+                                        </div>
+                                    )
+                                }
+                                if (hamster.id === match.loserId) {
+                                    return (
+                                        <div key={match.loserId}>
+                                            <h1>Loser</h1>
+                                            <h2>{hamster.name}</h2>
+                                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} width="200px" height="200px" />
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
 
-                        </div>
 
-                    )) : null
-                    }
-                </div>
-            )) : null}
+                    </div>
+                ))
+
+                : 'Laddar matcher...'}
+
         </div>
     )
 }
