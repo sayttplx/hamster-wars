@@ -5,6 +5,7 @@ import Gallery from './components/gallery/Gallery';
 import Navbar from './components/Navbar';
 import BadUrl from './components/BadUrl';
 import Stats from './components/Stats'
+import History from './components/History'
 import './App.css';
 
 
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path='/gallery'>
           <Gallery />
+        </Route>
+        <Route path='/matches'>
+          <History />
         </Route>
         <Route path='/stats'>
           <Stats />

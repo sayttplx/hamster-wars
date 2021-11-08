@@ -51,6 +51,17 @@ const Battle = () => {
     }
 
 
+    async function createMatch(winner: Hamster, loser: Hamster) {
+        try {
+            const res = await axios.post('/matches', {
+                winnerId: winner.id,
+                loserId: loser.id,
+            })
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     if (!combatantOne || !combatantTwo) { return <Loading>Loading...</Loading> }
@@ -77,6 +88,8 @@ const Battle = () => {
         await axios.put(`/hamsters/${winnerId}`, changeWinner)
         await axios.put(`/hamsters/${loserId}`, changeLoser)
 
+        await createMatch(combatantOne, combatantTwo)
+
     }
 
     async function voteTwo() {
@@ -101,6 +114,9 @@ const Battle = () => {
 
         await axios.put(`/hamsters/${winnerId}`, changeWinner)
         await axios.put(`/hamsters/${loserId}`, changeLoser)
+
+        await createMatch(combatantTwo, combatantOne)
+
     }
 
     return (
