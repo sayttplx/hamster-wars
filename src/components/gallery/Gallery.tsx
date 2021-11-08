@@ -43,7 +43,7 @@ const Gallery = () => {
     }, []);
 
     async function deleteHamster(id: string) {
-        await fetch(`/hamsters/${id}`, { method: 'DELETE' });
+        await axios.delete(`/hamsters/${id}`)
         setHamsters(hamsters.filter(hamster => hamster.id !== id));
 
     }
