@@ -15,3 +15,19 @@ async function clear() {
         hamstersRef.doc(hamster.id).delete()
     })
 }
+
+clearMatches();
+
+
+async function clearMatches() {
+    const matchesRef = db.collection('matches');
+    const matchesSnapshot = await matchesRef.get();
+
+    if( matchesSnapshot.empty) {
+        return
+    }
+
+    matchesSnapshot.forEach(match => {
+        matchesRef.doc(match.id).delete()
+    })
+}
