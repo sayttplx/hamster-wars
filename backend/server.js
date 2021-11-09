@@ -32,9 +32,11 @@ app.use('/hamsters', hamstersRoute);
 
 app.use('/matches', matchesRoute);
 
+app.use('/matchwinners', winnersRoute);
+
 app.use('/', laddersRoute);
 
-app.use('/matchwinners', winnersRoute);
+
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../build/index.html"));
