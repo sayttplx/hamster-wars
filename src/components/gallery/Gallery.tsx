@@ -20,18 +20,12 @@ const GalleryHeader = styled.div`
     }
     `
 
-
-
-
-
-
-
-
 const Gallery = () => {
     const [hamsters, setHamsters] = useState<[] | Hamster[]>([]);
     const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
     const [hamsterInfo, setHamsterInfo] = useState<Hamster | null>(null);
-   
+
+
     async function getHamsters() {
         const response = await axios.get('/hamsters')
         setHamsters(response.data)
@@ -72,21 +66,26 @@ const Gallery = () => {
                     <AddForm addHamster={addHamster} show={isModalVisible} set={setIsModalVisible} />
                     : null}
             </GalleryHeader>
-            
+
             <Grid>
-            {hamsterInfo && show ? <HamsterInfo hamster={hamsterInfo} handleClose={handleClose} /> : null}
+                {hamsterInfo && show ? <HamsterInfo hamster={hamsterInfo} handleClose={handleClose} /> : null}
                 {hamsters ? hamsters.map(hamster =>
-                    
-                    <GalleryItem  key={hamster.id}>
-                                
-                                <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
-                                <h3>{hamster.name}</h3>
-                                <button className="delete-button" onClick={() => deleteHamster(hamster.id)}>🗑️</button>
-                                <button className="info-button" onClick={() => {setShow(!show); getHamsterInfoById(hamster.id)}}>🐹</button>
-                                
+
+                    <GalleryItem key={hamster.id}>
+
+                        {hamster.imgName.startsWith('http') ?
+                            <img src={hamster.imgName} alt={hamster.name} />
+                            :
+                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
+                        }
+
+                        <h3>{hamster.name}</h3>
+                        <button className="delete-button" onClick={() => deleteHamster(hamster.id)}>🗑️</button>
+                        <button className="info-button" onClick={() => { setShow(!show); getHamsterInfoById(hamster.id) }}>🐹</button>
+
                     </GalleryItem>
                 ) : null}
-                
+
             </Grid>
         </>
     );

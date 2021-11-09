@@ -21,6 +21,25 @@ margin: 10px;
 `;
 
 
+export const Button = styled.button`
+  background-color: #E1C1BC;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #d6b5a8;
+  }
+`;
+
+
 const History = () => {
     const [matches, setMatches] = useState<Matches[] | null>(null)
     const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
@@ -56,7 +75,7 @@ const History = () => {
             {matches ?
                 matches.map(match => (
                     <Match key={match.id} >
-                        <button onClick={() => deleteMatch(match.id)}>Delete</button>
+                        <Button onClick={() => deleteMatch(match.id)}>Delete</Button>
                         {
                             hamsters?.map(hamster => {
                                 

@@ -31,7 +31,7 @@ const Stats = () => {
                     <ul>
                         {winners.map(winner => (
                             <li key={winner.id}>
-                                <p>{winner.id}</p>
+                                <p>{winner.name}</p>
                             </li>
                         ))}
                     </ul>
@@ -41,7 +41,7 @@ const Stats = () => {
                     <ul>
                         {losers.map(loser => (
                             <li key={loser.id}>
-                                <p>{loser.id}</p>
+                                <p>{loser.name}</p>
                             </li>
                         ))}
                     </ul>

@@ -4,8 +4,10 @@ import styled from "styled-components";
 const Navigation = styled.nav`
     background-color: #ffe8d6;
     display: flex;
-    justify-content: left;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    text-align: center;
 
     ul {
         list-style: none;
@@ -27,10 +29,20 @@ const Navigation = styled.nav`
     
     `;
 
+
+const Kek = styled.h1`
+  color: #E1C1BC;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  `
+
+
 const Navbar = () => {
 
     return (
         <Navigation>
+            <Kek>HAMSTERWARS</Kek>
             <ul>
                 <Link to="/"> <li>Home</li></Link>
                 <Link to="/battle"><li>Battle</li></Link>
