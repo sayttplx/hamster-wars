@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Matches } from '../models/Matches'
-import { Hamster } from '../models/Hamster'
+import { Matches } from '../../models/Matches'
+import { Hamster } from '../../models/Hamster'
 import axios from "axios";
 import styled from "styled-components";
 

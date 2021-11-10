@@ -33,7 +33,8 @@ export const InputContainer = styled(InputWrapper)`
 `
 export const IconContainer = styled.div`
   width: 33px;
-  padding-left: 6px;
+  padding-left: 0px;
+  padding-top: 5px;
 `
 
 export const ModalInput = styled.input`

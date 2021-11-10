@@ -1,5 +1,9 @@
 import { FunctionComponent, MouseEventHandler, useState } from "react"
-import { ReactComponent as FoodIcon } from '../../../assets/food.svg'
+import { ReactComponent as HamsterIcon} from '../../../assets/hamster.svg'
+import { ReactComponent as AgeIcon} from '../../../assets/year.svg'
+import { ReactComponent as ImageIcon} from '../../../assets/image.svg'
+import { ReactComponent as PizzaIcon} from '../../../assets/pizza.svg'
+import { ReactComponent as LoveIcon} from '../../../assets/love.svg'
 import InputWithIcon from "./InputWithIcon"
 import { PostHamster } from "../../../models/Hamster"
 import { AddFormProps, Form, CloseButton, CloseSign, Header, Button, ButtonContainer, Section } from './Form'
@@ -111,7 +115,7 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
             onBlur={() => setNameTouch(true)}
             onChange={e => setName(e.target.value)}
             type="name"
-            icon={<FoodIcon width="24px" height="24px" fill="white" />}
+            icon={<HamsterIcon width="24px" height="24px" fill="white" />}
             placeholder="Name"
 
           />
@@ -122,7 +126,7 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
             onBlur={() => setAgeTouch(true)}
             onChange={e => setAge(e.target.value)}
             type="age"
-            icon={<FoodIcon width="24px" height="24px" fill="white" />}
+            icon={<AgeIcon width="24px" height="24px" fill="white" />}
             placeholder="Age"
           />
           {ageTouch ? <div className="message"> {ageError} </div> : null}
@@ -133,7 +137,7 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
             onBlur={() => setFoodTouch(true)}
             onChange={e => setFavFood(e.target.value)}
             type="favFood"
-            icon={<FoodIcon width="24px" height="24px" fill="white" />}
+            icon={<PizzaIcon width="24px" height="24px" fill="white" />}
             placeholder="Favorite food"
           />
           {foodTouch ? <div className="message"> {foodError} </div> : null}
@@ -144,7 +148,7 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
             onBlur={() => setLoveTouch(true)}
             onChange={e => setLoves(e.target.value)}
             type="loves"
-            icon={<FoodIcon width="24px" height="24px" fill="white" />}
+            icon={<LoveIcon width="24px" height="24px" fill="white" />}
             placeholder="Loves"
           />
           {loveTouch ? <div className="message"> {loveError} </div> : null}
@@ -155,7 +159,7 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
             onBlur={() => setImgTouch(true)}
             onChange={e => setImgName(e.target.value)}
             type="imgName"
-            icon={<FoodIcon width="24px" height="24px" fill="white" />}
+            icon={<ImageIcon width="24px" height="24px" fill="white" />}
             placeholder="Image url"
           />
           {imgTouch ? <div className="message"> {imgError} </div> : null}

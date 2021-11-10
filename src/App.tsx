@@ -2,10 +2,10 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/home/Home';
 import Battle from './components/battle/Battle';
 import Gallery from './components/gallery/Gallery';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import BadUrl from './components/BadUrl';
-import Stats from './components/Stats'
-import History from './components/History'
+import Stats from './components/stats/Stats'
+import History from './components/history/History'
 import './App.css';
 
 
