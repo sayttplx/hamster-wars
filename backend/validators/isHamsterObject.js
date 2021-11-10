@@ -10,7 +10,6 @@ const isHamsterObject = (obj) => {
     }
 
 
-
     if (!keys.includes('wins')
         || !keys.includes('defeats')
         || !keys.includes('games')
@@ -20,9 +19,8 @@ const isHamsterObject = (obj) => {
         || !keys.includes('loves')
         || !keys.includes('imgName')) {
         return false
-
-        
     }
+
     return true;
 
 };

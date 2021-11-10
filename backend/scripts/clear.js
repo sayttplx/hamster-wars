@@ -7,7 +7,7 @@ async function clear() {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
 
-    if( hamstersSnapshot.empty) {
+    if (hamstersSnapshot.empty) {
         return
     }
 
@@ -18,12 +18,11 @@ async function clear() {
 
 clearMatches();
 
-
 async function clearMatches() {
     const matchesRef = db.collection('matches');
     const matchesSnapshot = await matchesRef.get();
 
-    if( matchesSnapshot.empty) {
+    if (matchesSnapshot.empty) {
         return
     }
 

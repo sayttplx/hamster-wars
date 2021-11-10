@@ -10,7 +10,7 @@ const isHamsterUpdateObject = (obj) => {
     }
 
     const filter = value.filter(x => (typeof x === 'number'));
-    return filter.length === 2 || 3 ;
+    return filter.length === 2 || 3;
 }
 
 module.exports = isHamsterUpdateObject;

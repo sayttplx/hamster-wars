@@ -38,7 +38,7 @@ exports.getRandomHamster = async (req, res) => {
 
     hamstersSnapshot.forEach(async hamsterRef => {
 
-        arr.push({...hamsterRef.data(), id: hamsterRef.id});
+        arr.push({ ...hamsterRef.data(), id: hamsterRef.id });
     });
 
     const randomHamster = arr[Math.floor(Math.random() * arr.length)];
@@ -102,7 +102,7 @@ exports.getCutestHamster = async (req, res) => {
     if (hamstersSnapshot.empty) { res.sendStatus(400); return; };
     const arr = []
     hamstersSnapshot.forEach(hamster => {
-        arr.push({...hamster.data(), id: hamster.id});
+        arr.push({ ...hamster.data(), id: hamster.id });
     })
     const sortedHamsters = arr.sort(function (a, b) {
         return b.wins - a.wins

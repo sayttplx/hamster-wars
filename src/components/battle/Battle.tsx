@@ -7,7 +7,6 @@ import { Loading } from './Loading';
 import axios from 'axios';
 
 
-
 const Battle = () => {
     const [combatantOne, setCombatantOne] = useState<null | Hamster>(null)
     const [combatantTwo, setCombatantTwo] = useState<null | Hamster>(null)

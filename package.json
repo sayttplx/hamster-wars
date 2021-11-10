@@ -25,6 +25,8 @@
     "typescript": "^4.4.4",
     "web-vitals": "^1.1.2"
   },
+
+  
   "scripts": {
     "start": "node backend/server.js",
     "start-frontend": "react-scripts start",

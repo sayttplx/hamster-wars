@@ -66,6 +66,19 @@ const Kills = styled.div`
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `
 
+const Details = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 4px solid rgb(0,0,0);
+    border-radius: 0.3rem;
+    width: 250px;
+    height: 360px;
+    background-color: gray;
+    color: white;
+`
+
+
 
 interface Props {
   hamster: Hamster
@@ -122,7 +135,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
     <Section onClick={handleClose} >
       <Info onClick={stopPropagation}>
         <Header>{hamster.name}</Header>
-        <div className="hamster-info">
+        <Details>
           <p><span>Age:</span> {hamster.age}</p>
           <p><span>Favorite food:</span> {hamster.favFood}</p>
           <p><span>Loves:</span> {hamster.loves}</p>
@@ -131,7 +144,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
           <p><span>Games:</span> {hamster.games}</p>
           <button onClick={handleClose}>Close</button>
           <button onClick={() => setShowStats(!showStats)}>Battles won</button>
-        </div>
+        </Details>
       </Info>
 
       {showStats ?
