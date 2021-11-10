@@ -118,9 +118,15 @@ const Battle = () => {
             <h1>Battle</h1>
             <Grid>
 
+
+
                 <div className="grid-item">
                     {(combatantOne.id === winner?.id && <h1>Winner</h1>) || (combatantOne.id === loser?.id && <h1>Loser</h1>)}
-                    <img src={`/img/${combatantOne.imgName}`} alt={combatantOne.name} />
+                    {combatantOne.imgName.startsWith('http') ?
+                            <img src={combatantOne.imgName} alt={combatantOne.name} />
+                            :
+                            <img src={`/img/${combatantOne.imgName}`} alt={combatantOne.name} />
+                        }
                     <h1>{combatantOne.name}</h1>
 
                     {voteButton && <button onClick={voteOne}>Vote</button>}
@@ -135,9 +141,15 @@ const Battle = () => {
                         </div>}
                 </div>
 
+
+
                 <div className="grid-item">
                     {(combatantTwo.id === winner?.id && <h1>Winner</h1>) || (combatantTwo.id === loser?.id && <h1>Loser</h1>)}
-                    <img src={`/img/${combatantTwo.imgName}`} alt={combatantTwo.name} />
+                    {combatantTwo.imgName.startsWith('http') ?
+                            <img src={combatantTwo.imgName} alt={combatantTwo.name} />
+                            :
+                            <img src={`/img/${combatantTwo.imgName}`} alt={combatantTwo.name} />
+                        }
                     <h1>{combatantTwo.name}</h1>
 
                     {voteButton && <button onClick={voteTwo}>Vote</button>}
