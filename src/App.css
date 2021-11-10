@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 .App {
     padding: 0em 2em;
     
@@ -5,6 +6,7 @@
 
 * {
     box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
   }
 
 body {

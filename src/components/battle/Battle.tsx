@@ -18,16 +18,10 @@ const Battle = () => {
 
 
     async function getRandomHamster() {
-        try {
             const resOne = await axios.get('/hamsters/random')
             const resTwo = await axios.get('/hamsters/random')
-
             setCombatantOne(resOne.data)
             setCombatantTwo(resTwo.data)
-        } catch (error) {
-            console.log(error)
-        }
-
     }
 
     useEffect(() => {

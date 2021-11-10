@@ -80,7 +80,6 @@ const Start = () => {
             <div>
         {cutestHamster ? cutestHamster.map(hamster => (
           <div key={hamster.id}>
-            <p>är den sötaste hamstern i världen just nu!</p>
             <Image>
             <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
             <div className="crown">
