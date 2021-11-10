@@ -32,7 +32,7 @@ margin-top: 2rem;
 img {
   padding: 1rem;
   width: 100%;
-  height: auto;
+  height: 400px
 }
 
 .crown {
@@ -51,6 +51,7 @@ img {
   font-size: 5rem;
   padding: 0;
   border-radius: 0;
+  color: #fff;
 }
   `
 

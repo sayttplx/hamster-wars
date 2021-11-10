@@ -25,6 +25,13 @@ export const Header = styled.h3`
   text-align: center;
 `
 
+export const ButtonContainer = styled.div`
+  padding-top: 10%;
+  display: flex;
+  justify-content: space-between;
+  width: 22rem;
+`;
+
 
 const Info = styled.div`
   display: flex;
@@ -66,6 +73,14 @@ const Kills = styled.div`
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `
 
+const Grid = styled.div`
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 1em;
+`
+
 const Details = styled.div`
     display: flex;
     justify-content: center;
@@ -78,6 +93,26 @@ const Details = styled.div`
     color: white;
 `
 
+export const Button = styled.button`
+  cursor: pointer;
+  border: 3px solid white;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  padding: 8px 16px;
+  line-height: 1em;
+  color: white;
+  background-color: rgb(27, 27, 27);
+  
+  &:hover {
+    color: black;
+    background-color: white;
+    border-color: white;
+  }
+  `
 
 
 interface Props {
@@ -142,21 +177,27 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
           <p><span>Wins:</span> {hamster.wins}</p>
           <p><span>Defeats:</span> {hamster.defeats}</p>
           <p><span>Games:</span> {hamster.games}</p>
-          <button onClick={handleClose}>Close</button>
-          <button onClick={() => setShowStats(!showStats)}>Battles won</button>
         </Details>
+        <ButtonContainer>
+        <Button onClick={handleClose}>Close</Button>
+        <Button onClick={() => setShowStats(!showStats)}>Wins</Button>
+        </ButtonContainer>
       </Info>
 
       {showStats ?
         <Kills onClick={stopPropagation}>
-          <h1>Matches won</h1>
+          <h1>Defeated</h1>
+          <Grid>
           {matches ? matches.map(hamster =>
             <div key={hamster.id}>
-              <p>{hamster.name}</p>
+               <p>{hamster.name}💀</p>
             </div>
+            
           )
+          
             : 'Loading..'}
-          <button onClick={handleCloseStats}>Close</button>
+            </Grid>
+          <Button onClick={handleCloseStats}>Close</Button>
         </Kills>
         : null
       }
