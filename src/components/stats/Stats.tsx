@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Hamster } from '../../models/Hamster'
 import { Wrapper } from '../../shared/Wrapper'
-import { StatsWrapper, Loser, Winner, Left, Right  } from './Wrapper'
+import { StatsWrapper, Loser, Winner, Left, Right } from './Wrapper'
 import axios from 'axios'
 
 

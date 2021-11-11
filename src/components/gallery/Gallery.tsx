@@ -56,7 +56,6 @@ const Gallery = () => {
     const handleClose = () => setShow(false)
 
 
-
     return (
         <>
             <GalleryHeader>

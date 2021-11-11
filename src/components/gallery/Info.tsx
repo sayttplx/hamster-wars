@@ -107,7 +107,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
       }
       const data = response.data;
 
-    
+
       let loserIds = data.map((match: Matches) => match.loserId);
       let arr: string[] = []
       loserIds.forEach((id: string) => {
@@ -142,7 +142,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
   return (
     <Section onClick={handleClose} >
       <Info onClick={stopPropagation}>
-        <Header text={hamster.name}/>
+        <Header text={hamster.name} />
         <Details>
           <p><span>Age:</span> {hamster.age}</p>
           <p><span>Favorite food:</span> {hamster.favFood}</p>

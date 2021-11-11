@@ -14,24 +14,13 @@ const History = () => {
 
 
     async function getMatches() {
-        try {
-            const response = await axios.get(`/matches`)
-            setMatches(response.data)
-        }
-        catch (error) {
-            console.log(error)
-        }
-
+        const response = await axios.get(`/matches`)
+        setMatches(response.data)
     }
 
     async function getHamsters() {
-            try {
-                const response = await axios.get(`/hamsters`)
-                setHamsters(response.data)
-            }
-            catch (error) {
-                console.log(error)
-            }
+        const response = await axios.get(`/hamsters`)
+        setHamsters(response.data)
     }
 
     async function deleteMatch(id: string) {
@@ -57,16 +46,16 @@ const History = () => {
                         <Button onClick={() => deleteMatch(match.id)}>Delete</Button>
                         {
                             hamsters?.map(hamster => {
-                                
+
                                 if (hamster.id === match.winnerId) {
                                     return (
                                         <div key={match.winnerId}>
                                             <h1>Winner</h1>
                                             {hamster.imgName.startsWith('http') ?
-                            <img src={hamster.imgName} alt={hamster.name} height="200" width="200" />
-                            :
-                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="200" width="200" />
-                        }
+                                                <img src={hamster.imgName} alt={hamster.name} height="200" width="200" />
+                                                :
+                                                <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="200" width="200" />
+                                            }
                                             <h2>{hamster.name}</h2>
                                         </div>
                                     )
@@ -76,10 +65,10 @@ const History = () => {
                                         <div key={match.loserId}>
                                             <h1>Loser</h1>
                                             {hamster.imgName.startsWith('http') ?
-                            <img src={hamster.imgName} alt={hamster.name} height="200" width="200" />
-                            :
-                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="200" width="200" />
-                        }
+                                                <img src={hamster.imgName} alt={hamster.name} height="200" width="200" />
+                                                :
+                                                <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="200" width="200" />
+                                            }
                                             <h2>{hamster.name}</h2>
                                         </div>
                                     )
@@ -94,7 +83,7 @@ const History = () => {
                     </Match>
                 ))
 
-                : null }
+                : <div>Loading...</div>}
 
         </Wrapper>
     )
