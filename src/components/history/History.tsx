@@ -35,9 +35,6 @@ const History = () => {
     }, []);
 
 
-
-
-
     return (
         <Wrapper>
             {matches ?
@@ -75,16 +72,11 @@ const History = () => {
                                 } else {
                                     return null
                                 }
-
                             })
                         }
-
-
                     </Match>
                 ))
-
                 : <div>Loading...</div>}
-
         </Wrapper>
     )
 }
