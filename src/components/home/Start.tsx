@@ -3,24 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Hamster } from '../../models/Hamster'
+import { Button } from '../../shared/Button'
 
-export const Button = styled.button`
-  background-color: #E1C1BC;
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #d6b5a8;
-  }
-`;
 
 const Image = styled.div`
 position: relative;

@@ -16,13 +16,6 @@ export const StatsWrapper = styled.div`
     }
 `
 
-export const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    `
-
 export const Left = styled.div`
     grid-area: left;
     display: flex;

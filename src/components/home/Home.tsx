@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Hamster } from '../../models/Hamster'
-import styled from 'styled-components'
 import axios from 'axios';
 import Start from './Start';
 import Error from './Error';
+import { Wrapper } from '../../shared/Wrapper'
 
 
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    `;
 
 const Home = () => {
 

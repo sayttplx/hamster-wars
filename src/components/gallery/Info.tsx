@@ -4,6 +4,10 @@ import { Hamster } from '../../models/Hamster'
 import { Matches } from '../../models/Matches'
 import styled from 'styled-components'
 import axios from 'axios'
+import { SecondaryButton as Button } from '../../shared/Button';
+import Header from './Header';
+import { Details } from './Details';
+
 
 
 const Section = styled.section`
@@ -16,14 +20,9 @@ const Section = styled.section`
   z-index: 1;
 `
 
-export const Header = styled.h3`
-  color: black;
-  font-size: 52px;
-  line-height: 1em;
-  font-weight: 700;
-  margin: 5px 0 10px;
-  text-align: center;
-`
+
+
+
 
 export const ButtonContainer = styled.div`
   padding-top: 10%;
@@ -80,40 +79,6 @@ const Grid = styled.div`
     grid-template-rows: repeat(3, 1fr);
 `
 
-const Details = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border: 4px solid rgb(0,0,0);
-    border-radius: 0.3rem;
-    width: 250px;
-    height: 360px;
-    background-color: gray;
-    color: white;
-`
-
-export const Button = styled.button`
-  cursor: pointer;
-  border: 3px solid white;
-  font-size: 16px;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 150px;
-  padding: 8px 16px;
-  line-height: 1em;
-  color: white;
-  background-color: rgb(27, 27, 27);
-  
-  &:hover {
-    color: black;
-    background-color: white;
-    border-color: white;
-  }
-  `
-
-
 interface Props {
   hamster: Hamster
   handleClose: () => void
@@ -128,16 +93,21 @@ const stopPropagation: MouseEventHandler<HTMLDivElement> = e => {
 const HamsterInfo = ({ hamster, handleClose }: Props) => {
 
   const [matches, setMatches] = useState<Hamster[]>([])
-  const [matchesWon, setMatchesWon ] = useState<Matches[] | null>(null)
+  const [matchesWon, setMatchesWon] = useState<Matches[] | null>(null)
 
 
 
   useEffect(() => {
     async function getMatchWinners(id: string) {
-      
+
       const response = await axios.get(`/matchwinners/${id}`);
+      // if error return
+      if (response.status !== 200) {
+        return;
+      }
       const data = response.data;
 
+    
       let loserIds = data.map((match: Matches) => match.loserId);
       let arr: string[] = []
       loserIds.forEach((id: string) => {
@@ -147,7 +117,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
           setMatchesWon(null)
         }
       })
-      
+
 
       const getLosers = async (id: string) => {
         const response = await axios.get(`/hamsters/${id}`);
@@ -172,7 +142,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
   return (
     <Section onClick={handleClose} >
       <Info onClick={stopPropagation}>
-        <Header>{hamster.name}</Header>
+        <Header text={hamster.name}/>
         <Details>
           <p><span>Age:</span> {hamster.age}</p>
           <p><span>Favorite food:</span> {hamster.favFood}</p>
@@ -190,16 +160,16 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
       {showStats ?
         <Kills onClick={stopPropagation}>
           {matchesWon ?
-          <h1>Defeated</h1>
-          : <h1>No Hamsters Defeated</h1>
-        }
+            <h1>Defeated</h1>
+            : <h1>No Hamsters Defeated</h1>
+          }
           <Grid>
             {matches ? matches.map(hamster =>
               <div key={hamster.id}>
                 <p>{hamster.name}💀</p>
               </div>
-              )  : null}
-            
+            ) : null}
+
           </Grid>
           <Button onClick={handleCloseStats}>Close</Button>
         </Kills>

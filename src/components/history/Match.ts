@@ -1,10 +1,8 @@
 import styled from "styled-components";
+import { Wrapper } from '../../shared/Wrapper'
 
-export const Match = styled.div`
-display: flex;
+export const Match = styled(Wrapper)`
 flex-direction: row;
-align-items: center;
-justify-content: center;
 gap: 1rem;
 margin: 10px;
-`;
+`

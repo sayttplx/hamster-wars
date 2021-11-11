@@ -6,8 +6,8 @@ import { ReactComponent as PizzaIcon} from '../../../assets/pizza.svg'
 import { ReactComponent as LoveIcon} from '../../../assets/love.svg'
 import InputWithIcon from "./InputWithIcon"
 import { PostHamster } from "../../../models/Hamster"
-import { AddFormProps, Form, CloseButton, CloseSign, Header, Button, ButtonContainer, Section } from './Form'
-
+import { AddFormProps, Form, CloseButton, CloseSign, Header,ButtonContainer, Section } from './Form'
+import { SecondaryButton as Button } from "../../../shared/Button"
 
 
 const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => {

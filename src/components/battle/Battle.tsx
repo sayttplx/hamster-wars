@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Hamster } from '../../models/Hamster'
 import { Grid } from './Grid'
-import { Button } from './Button'
-import { BattleField } from './Battlefield'
+import { Button } from '../../shared/Button'
+import { Wrapper } from '../../shared/Wrapper';
 import { Loading } from './Loading';
 import axios from 'axios';
 
@@ -107,7 +107,7 @@ const Battle = () => {
     }
 
     return (
-        <BattleField>
+        <Wrapper>
 
             <h1>Battle</h1>
             <Grid>
@@ -123,7 +123,7 @@ const Battle = () => {
                         }
                     <h1>{combatantOne.name}</h1>
 
-                    {voteButton && <button onClick={voteOne}>Vote</button>}
+                    {voteButton && <Button onClick={voteOne}>Vote</Button>}
 
 
                     {(combatantStatsOne || combatantStatsTwo) &&
@@ -146,7 +146,7 @@ const Battle = () => {
                         }
                     <h1>{combatantTwo.name}</h1>
 
-                    {voteButton && <button onClick={voteTwo}>Vote</button>}
+                    {voteButton && <Button onClick={voteTwo}>Vote</Button>}
 
                     {(combatantStatsOne || combatantStatsTwo) &&
 
@@ -161,7 +161,7 @@ const Battle = () => {
 
             <Button onClick={next}>Next</Button>
 
-        </BattleField>
+        </Wrapper>
     )
 };
 

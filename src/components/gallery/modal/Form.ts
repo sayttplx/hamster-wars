@@ -40,33 +40,6 @@ export const Form = styled.div`
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `
 
-export const Button = styled.button`
-  cursor: pointer;
-  border: 3px solid white;
-  font-size: 16px;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 150px;
-  padding: 8px 16px;
-  line-height: 1em;
-  color: white;
-  background-color: rgb(27, 27, 27);
-  
-  &:hover {
-    color: black;
-    background-color: white;
-    border-color: white;
-  }
-
-  &:disabled {
-    cursor: unset;
-    background-color: rgb(27, 27, 27);
-    color: white;
-  }
-`
-
 export const ButtonContainer = styled.div`
   padding-top: 10%;
   display: flex;

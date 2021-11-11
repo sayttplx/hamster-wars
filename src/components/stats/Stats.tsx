@@ -1,6 +1,7 @@
-import { Hamster } from '../../models/Hamster'
 import { useState, useEffect } from 'react'
-import { StatsWrapper, Wrapper, Loser, Winner, Left, Right  } from './Wrapper'
+import { Hamster } from '../../models/Hamster'
+import { Wrapper } from '../../shared/Wrapper'
+import { StatsWrapper, Loser, Winner, Left, Right  } from './Wrapper'
 import axios from 'axios'
 
 
@@ -9,16 +10,12 @@ const Stats = () => {
     const [winners, setWinners] = useState<Hamster[]>([])
     const [losers, setLosers] = useState<Hamster[]>([])
 
-
     async function getLadders() {
         const winner = await axios.get('/winners')
         const loser = await axios.get('/losers')
         setWinners(winner.data)
         setLosers(loser.data)
-        console.log(winner.data)
-        console.log(loser.data)
     }
-
 
     useEffect(() => {
         getLadders()
@@ -72,6 +69,3 @@ const Stats = () => {
 }
 
 export default Stats;
-
-
-

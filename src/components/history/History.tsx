@@ -1,43 +1,11 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { Matches } from '../../models/Matches'
 import { Hamster } from '../../models/Hamster'
-import axios from "axios";
-import styled from "styled-components";
+import { Button } from '../../shared/Button'
+import { Wrapper } from '../../shared/Wrapper'
+import { Match } from './Match'
 
-const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-`;
-
-const Match = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-gap: 1rem;
-margin: 10px;
-`;
-
-
-export const Button = styled.button`
-  background-color: #E1C1BC;
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #d6b5a8;
-  }
-`;
 
 
 const History = () => {
@@ -46,13 +14,24 @@ const History = () => {
 
 
     async function getMatches() {
-        const response = await axios.get("/matches");
-        setMatches(response.data);
+        try {
+            const response = await axios.get(`/matches`)
+            setMatches(response.data)
+        }
+        catch (error) {
+            console.log(error)
+        }
+
     }
 
     async function getHamsters() {
-        const response = await axios.get('/hamsters')
-        setHamsters(response.data)
+            try {
+                const response = await axios.get(`/hamsters`)
+                setHamsters(response.data)
+            }
+            catch (error) {
+                console.log(error)
+            }
     }
 
     async function deleteMatch(id: string) {
@@ -83,7 +62,11 @@ const History = () => {
                                     return (
                                         <div key={match.winnerId}>
                                             <h1>Winner</h1>
-                                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} width="200px" height="200px" />
+                                            {hamster.imgName.startsWith('http') ?
+                            <img src={hamster.imgName} alt={hamster.name} height="200" width="200" />
+                            :
+                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="200" width="200" />
+                        }
                                             <h2>{hamster.name}</h2>
                                         </div>
                                     )
@@ -92,7 +75,11 @@ const History = () => {
                                     return (
                                         <div key={match.loserId}>
                                             <h1>Loser</h1>
-                                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} width="200px" height="200px" />
+                                            {hamster.imgName.startsWith('http') ?
+                            <img src={hamster.imgName} alt={hamster.name} height="200" width="200" />
+                            :
+                            <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="200" width="200" />
+                        }
                                             <h2>{hamster.name}</h2>
                                         </div>
                                     )

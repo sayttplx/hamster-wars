@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Hamster } from '../../models/Hamster'
 import { Grid } from './Grid'
 import { GalleryItem } from "./GalleryItem";
-import { Button } from "./Button";
+import { Button } from "../../shared/Button";
 import AddForm from './modal/ModalForm'
 import axios from "axios";
 import HamsterInfo from "./Info";

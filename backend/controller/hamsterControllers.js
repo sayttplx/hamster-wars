@@ -58,7 +58,7 @@ exports.getHamsterById = async (req, res) => {
         hamster.id = hamsterSnapshot.id;
         res.send(hamster);
     } else {
-        res.sendStatus(404);
+        return
     }
 }
 

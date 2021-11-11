@@ -19,23 +19,6 @@ export const Grid = styled.div`
             background-color: #fff;
         }
 
-        button {
-            width: 13em;
-            padding: 0.8em 1.2em;
-            margin-top: 1em;
-            border-radius: 5em;
-            border: none;
-            background-color: #f5f5f5;
-            color: #000;
-            font-size: 1em;
-            font-weight: lighter;
-        }
-
-        button:hover {
-            background-color: #ccc;
-            cursor: pointer;
-            transform: scale(1.1);
-        }
 
         h3 {
            font-size: 1.5em;
