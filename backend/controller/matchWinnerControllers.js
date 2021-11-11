@@ -11,11 +11,11 @@ exports.getWinnersMatches = async (req, res) => {
     const hamsterRef = db.collection(HAMSTERS).doc(hamsterID);
     const matchesSnapshot = await matchesRef.get();
     if (matchesSnapshot.empty) {
-        res.sendStatus(404);
+        return
     }
     const hamsterSnapshot = await hamsterRef.get();
     if (hamsterSnapshot.empty) {
-        res.sendStatus(404);
+        return
     }
 
     await matchesSnapshot.forEach(async matchRef => {
@@ -27,6 +27,6 @@ exports.getWinnersMatches = async (req, res) => {
     if (arr.length > 0) {
         res.status(200).send(arr);
     } else {
-        res.sendStatus(404);
+        return
     }
 }
