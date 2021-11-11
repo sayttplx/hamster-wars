@@ -18,11 +18,20 @@ const Battle = () => {
 
 
     async function getRandomHamster() {
-            const resOne = await axios.get('/hamsters/random')
-            const resTwo = await axios.get('/hamsters/random')
-            setCombatantOne(resOne.data)
-            setCombatantTwo(resTwo.data)
+        const response = await axios.get('/hamsters/')
+        const hamsters = response.data
+
+        let randomHamsterOne = hamsters[Math.floor(Math.random() * hamsters.length)]
+        let randomHamsterTwo = hamsters[Math.floor(Math.random() * hamsters.length)]
+
+        if (randomHamsterOne.id === randomHamsterTwo.id) {
+            randomHamsterTwo = hamsters[Math.floor(Math.random() * hamsters.length)]
+        }
+        setCombatantOne(randomHamsterOne)
+        setCombatantTwo(randomHamsterTwo)
     }
+
+
 
     useEffect(() => {
         getRandomHamster()
@@ -117,10 +126,10 @@ const Battle = () => {
                 <div className="grid-item">
                     {(combatantOne.id === winner?.id && <h1>Winner</h1>) || (combatantOne.id === loser?.id && <h1>Loser</h1>)}
                     {combatantOne.imgName.startsWith('http') ?
-                            <img src={combatantOne.imgName} alt={combatantOne.name} />
-                            :
-                            <img src={`/img/${combatantOne.imgName}`} alt={combatantOne.name} />
-                        }
+                        <img src={combatantOne.imgName} alt={combatantOne.name} />
+                        :
+                        <img src={`/img/${combatantOne.imgName}`} alt={combatantOne.name} />
+                    }
                     <h1>{combatantOne.name}</h1>
 
                     {voteButton && <Button onClick={voteOne}>Vote</Button>}
@@ -140,10 +149,10 @@ const Battle = () => {
                 <div className="grid-item">
                     {(combatantTwo.id === winner?.id && <h1>Winner</h1>) || (combatantTwo.id === loser?.id && <h1>Loser</h1>)}
                     {combatantTwo.imgName.startsWith('http') ?
-                            <img src={combatantTwo.imgName} alt={combatantTwo.name} />
-                            :
-                            <img src={`/img/${combatantTwo.imgName}`} alt={combatantTwo.name} />
-                        }
+                        <img src={combatantTwo.imgName} alt={combatantTwo.name} />
+                        :
+                        <img src={`/img/${combatantTwo.imgName}`} alt={combatantTwo.name} />
+                    }
                     <h1>{combatantTwo.name}</h1>
 
                     {voteButton && <Button onClick={voteTwo}>Vote</Button>}
