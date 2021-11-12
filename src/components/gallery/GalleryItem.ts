@@ -51,3 +51,15 @@ h3 {
 
 }
 `
+
+export const GalleryHeader = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    `

@@ -1,24 +1,13 @@
 import { useEffect, useState } from "react";
 import { Hamster } from '../../models/Hamster'
 import { Grid } from './Grid'
-import { GalleryItem } from "./GalleryItem";
+import { GalleryItem, GalleryHeader } from "./GalleryItem";
 import { Button } from "../../shared/Button";
 import AddForm from './modal/ModalForm'
 import axios from "axios";
 import HamsterInfo from "./Info";
-import styled from 'styled-components';
 
-const GalleryHeader = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
 
-    h1 {
-        font-size: 3rem;
-        font-weight: bold;
-    }
-    `
 
 const Gallery = () => {
     const [hamsters, setHamsters] = useState<[] | Hamster[]>([]);
