@@ -48,7 +48,15 @@ const Battle = () => {
     }
 
     async function createMatch(winner: Hamster, loser: Hamster) {
-        await axios.post('/matches/', { winner, loser })
+        try {
+            const res = await axios.post('/matches', {
+                winnerId: winner.id,
+                loserId: loser.id,
+            })
+           
+        } catch  {
+            return
+        }
     }
 
     if (!combatantOne || !combatantTwo) { return <Loading>Loading...</Loading> }
