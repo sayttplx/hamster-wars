@@ -3,10 +3,79 @@ import { MouseEventHandler, useEffect, useState } from 'react';
 import axios from 'axios'
 import { Hamster } from '../../models/Hamster'
 import { Matches } from '../../models/Matches'
-import { Section, Info, Grid, ButtonContainer, Kills } from './Information'
+import styled from 'styled-components';
 import { SecondaryButton as Button } from '../../shared/Button';
 import Header from './Header';
 import { Details } from './Details';
+
+const Section = styled.section`
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`
+
+
+
+
+
+export const ButtonContainer = styled.div`
+  padding-top: 10%;
+  display: flex;
+  justify-content: space-between;
+  width: 22rem;
+`;
+
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  justify-content: space-evenly;
+  width: 400px;
+  margin: 5em auto;
+  border-radius: 5px;
+  padding: 2em 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #a18c8c;
+  color: black;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+`
+
+const Kills = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  justify-content: space-evenly;
+  width: 400px;
+  margin: 5em auto;
+  border-radius: 5px;
+  padding: 2em 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #a18c8c;
+  color: black;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+`
+
+const Grid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+`
+
 
 
 interface Props {
@@ -88,10 +157,7 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
 
       {showStats ?
         <Kills onClick={stopPropagation}>
-          {matchesWon ?
-            <h1>Defeated</h1>
-            : <h1>No Hamsters Defeated</h1>
-          }
+            
           <Grid>
             {matches ? matches.map(hamster =>
               <div key={hamster.id}>
