@@ -157,7 +157,6 @@ const HamsterInfo = ({ hamster, handleClose }: Props) => {
 
       {showStats ?
         <Kills onClick={stopPropagation}>
-            
           <Grid>
             {matches ? matches.map(hamster =>
               <div key={hamster.id}>
