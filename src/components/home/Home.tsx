@@ -25,7 +25,7 @@ const Home = () => {
 
     return (
         <Wrapper>
-            {hamsters ? <Start/> : <Error/>}
+            {hamsters ? <Start /> : <Error />}
         </Wrapper>
     )
 }

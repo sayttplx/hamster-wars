@@ -8,7 +8,6 @@ import Stats from './components/stats/Stats'
 import History from './components/history/History'
 import './App.css';
 
-
 function App() {
   return (
     <>

@@ -53,8 +53,8 @@ const Battle = () => {
                 winnerId: winner.id,
                 loserId: loser.id,
             })
-           
-        } catch  {
+
+        } catch {
             return
         }
     }

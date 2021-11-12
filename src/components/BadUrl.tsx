@@ -10,11 +10,11 @@ const Bad = styled.div`
 
 const BadUrl = () => (
 	<Bad>
-	<h1>Den här sidan finns inte!</h1> 
-	<div>
-	<Link to="/"> tillbaka till startsidan</Link>.
-	</div>
-		 
+		<h1>Den här sidan finns inte!</h1>
+		<div>
+			<Link to="/"> tillbaka till startsidan</Link>.
+		</div>
+
 	</Bad>
 )
 

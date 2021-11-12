@@ -9,7 +9,7 @@ const StyledHeader = styled.h3`
   
 `
 
-const Header = ({text}: any) => {
+const Header = ({ text }: any) => {
   return (<StyledHeader>{text}</StyledHeader>)
 }
 
