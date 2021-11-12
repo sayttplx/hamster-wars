@@ -1,44 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Image } from './Image'
 import { Hamster } from '../../models/Hamster'
 import { Button } from '../../shared/Button'
-
-
-const Image = styled.div`
-position: relative;
-background-color: #fff;
-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-border-radius: 4px;
-margin-top: 2rem;
-
-img {
-  padding: 1rem;
-  width: 100%;
-  height: 400px
-}
-
-.crown {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 6rem;
-  padding: 0;
-  border-radius: 0;
-}
-
-.hamster-leader {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 5rem;
-  padding: 0;
-  border-radius: 0;
-  color: #fff;
-}
-  `
-
 
 
 
@@ -56,22 +21,20 @@ const Start = () => {
   }, [])
 
 
-
-
   return (
     <div>
       <p> Här kan du rösta på olika hamstrar för att utse den sötaste hamstern i hela världen. </p>
-            <div>
+      <div>
         {cutestHamster ? cutestHamster.map(hamster => (
           <div key={hamster.id}>
             <Image>
-            <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
-            <div className="crown">
-            👑
-            </div>
-            <div className="hamster-leader">
-            <strong>{hamster.name} </strong>
-            </div>
+              <img src={`/img/${hamster.imgName}`} alt={hamster.name} />
+              <div className="crown">
+                👑
+              </div>
+              <div className="hamster-leader">
+                <strong>{hamster.name} </strong>
+              </div>
             </Image>
           </div>
 
@@ -79,7 +42,7 @@ const Start = () => {
       </div>
 
 
-      <section>
+      <section className="buttons">
         <p>Klicka här om du vill köra igång och rösta!</p>
         <Link to="/battle">
           <Button>BATTLE</Button>

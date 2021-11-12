@@ -1,13 +1,14 @@
 import { FunctionComponent, MouseEventHandler, useState } from "react"
-import { ReactComponent as HamsterIcon} from '../../../assets/hamster.svg'
-import { ReactComponent as AgeIcon} from '../../../assets/year.svg'
-import { ReactComponent as ImageIcon} from '../../../assets/image.svg'
-import { ReactComponent as PizzaIcon} from '../../../assets/pizza.svg'
-import { ReactComponent as LoveIcon} from '../../../assets/love.svg'
+import { ReactComponent as HamsterIcon } from '../../../assets/hamster.svg'
+import { ReactComponent as AgeIcon } from '../../../assets/year.svg'
+import { ReactComponent as ImageIcon } from '../../../assets/image.svg'
+import { ReactComponent as PizzaIcon } from '../../../assets/pizza.svg'
+import { ReactComponent as LoveIcon } from '../../../assets/love.svg'
 import InputWithIcon from "./InputWithIcon"
 import { PostHamster } from "../../../models/Hamster"
-import { AddFormProps, Form, CloseButton, CloseSign, Header,ButtonContainer, Section } from './Form'
+import { AddFormProps, Form, CloseButton, CloseSign, Header, ButtonContainer, Section } from './Form'
 import { SecondaryButton as Button } from "../../../shared/Button"
+import axios from "axios"
 
 
 const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => {
@@ -73,25 +74,13 @@ const AddForm: FunctionComponent<AddFormProps> = ({ show, set, addHamster }) => 
   let imgNameClass = "";
   if (imgTouch) { imgNameClass = imgNameIsValid ? "valid" : "invalid"; }
 
-  const formIsInvalid =
-  !nameIsValid ||
-  !ageIsValid ||
-  !favFoodIsValid ||
-  !lovesIsValid ||
-  !imgNameIsValid;
-
+  const formIsInvalid = !nameIsValid || !ageIsValid || !favFoodIsValid || !lovesIsValid || !imgNameIsValid;
 
 
   const hamsterObject = { name, age, favFood, loves, imgName, wins, games, defeats }
 
   async function createHamster(hamsterObject: PostHamster) {
-    await fetch('/hamsters', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(hamsterObject)
-    })
+    await axios.post('/hamsters', hamsterObject)
     addHamster()
   }
 

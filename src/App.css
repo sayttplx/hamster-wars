@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-.App {
-    padding: 0em 2em;
-    
-}
+
 
 * {
     box-sizing: border-box;
@@ -14,39 +11,9 @@ body {
     background-color: #ffe8d6;
 }
 
-
-
-.gall {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding-bottom: 2rem;
-}
-
-
-
-.hamster-info {
+  .buttons {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border: 4px solid rgb(0,0,0);
-    border-radius: 0.3rem;
-    width: 250px;
-    height: 360px;
-    background-color: gray;
-    color: white;
-}
-
-
-.item { 
-    width: 30%;
-    display: inline-block;
-    margin-top: 2rem;
-    filter: grayscale(100%);
-}
-
-.item:nth-of-type(4n+1) {
-    transform: scale(0.8, 0.8) rotate(5deg);
-    transition: all 0.35s;
+    align-items: center;
   }

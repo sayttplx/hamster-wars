@@ -57,7 +57,7 @@ const Stats = () => {
                                 }
                                 <div>
                                     <h3>{loser.name}</h3>
-                                    <p>{loser.wins} Wins</p>
+                                    <p>{loser.defeats} Defeats</p>
                                 </div>
                             </Loser>
                         ))}

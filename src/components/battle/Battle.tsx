@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Hamster } from '../../models/Hamster'
-import { Grid } from './Grid'
+import { Grid, GridItem } from './Grid'
 import { Button } from '../../shared/Button'
 import { Wrapper } from '../../shared/Wrapper';
 import { Loading } from './Loading';
-import axios from 'axios';
+
 
 
 const Battle = () => {
@@ -46,26 +47,15 @@ const Battle = () => {
         setLoser(null)
     }
 
-
     async function createMatch(winner: Hamster, loser: Hamster) {
-        try {
-            const res = await axios.post('/matches', {
-                winnerId: winner.id,
-                loserId: loser.id,
-            })
-            console.log(res)
-        } catch (error) {
-            console.log(error)
-        }
+        await axios.post('/matches/', { winner, loser })
     }
-
 
     if (!combatantOne || !combatantTwo) { return <Loading>Loading...</Loading> }
 
     async function voteOne() {
 
         if (!combatantOne || !combatantTwo) { return }
-
 
         const winnerId = combatantOne.id
         const loserId = combatantTwo.id
@@ -85,13 +75,11 @@ const Battle = () => {
         await axios.put(`/hamsters/${loserId}`, changeLoser)
 
         await createMatch(combatantOne, combatantTwo)
-
     }
 
     async function voteTwo() {
 
         if (!combatantOne || !combatantTwo) { return }
-
 
         const winnerId = combatantTwo.id
         const loserId = combatantOne.id
@@ -100,7 +88,6 @@ const Battle = () => {
         setCombatantOne({ ...combatantOne, games: combatantOne.games + 1, defeats: combatantOne.defeats + 1 })
         setWinner(combatantTwo);
         setLoser(combatantOne);
-
 
         const changeWinner = { wins: combatantTwo.wins + 1, games: combatantTwo.games + 1 }
         const changeLoser = { games: combatantOne.games + 1, defeats: combatantOne.defeats + 1 }
@@ -117,13 +104,10 @@ const Battle = () => {
 
     return (
         <Wrapper>
-
             <h1>Battle</h1>
             <Grid>
 
-
-
-                <div className="grid-item">
+                <GridItem>
                     {(combatantOne.id === winner?.id && <h1>Winner</h1>) || (combatantOne.id === loser?.id && <h1>Loser</h1>)}
                     {combatantOne.imgName.startsWith('http') ?
                         <img src={combatantOne.imgName} alt={combatantOne.name} />
@@ -142,11 +126,9 @@ const Battle = () => {
                             <h3>Games: {combatantOne.games}</h3>
                             <h3>Defeats: {combatantOne.defeats}</h3>
                         </div>}
-                </div>
+                </GridItem>
 
-
-
-                <div className="grid-item">
+                <GridItem>
                     {(combatantTwo.id === winner?.id && <h1>Winner</h1>) || (combatantTwo.id === loser?.id && <h1>Loser</h1>)}
                     {combatantTwo.imgName.startsWith('http') ?
                         <img src={combatantTwo.imgName} alt={combatantTwo.name} />
@@ -164,7 +146,7 @@ const Battle = () => {
                             <h3>Games: {combatantTwo.games}</h3>
                             <h3>Defeats: {combatantTwo.defeats}</h3>
                         </div>}
-                </div>
+                </GridItem>
 
             </Grid>
 
